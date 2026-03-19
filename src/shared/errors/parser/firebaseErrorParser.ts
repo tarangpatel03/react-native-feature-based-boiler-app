@@ -1,0 +1,5 @@
+import { AppError } from '../AppError';
+
+export function parseFirebaseError(error: any): AppError {
+  return new AppError(error.message, error.code, undefined);
+}

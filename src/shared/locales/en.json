@@ -1,0 +1,10 @@
+{
+  "HOME_SCREEN": "Home Screen",
+  "SECOND_SCREEN": "Second Screen",
+  "LOADING": "Loading ...",
+  "API_ERRORS": {
+    "UNAUTHORIZED": "Unauthorized",
+    "SERVER_ERROR": "Server error",
+    "NETWORK_ERROR": "Network error"
+  }
+}
