@@ -4,6 +4,7 @@ import {
   LightTheme,
   OfflineBanner,
   ThemeModeOptions,
+  useNetworkListener,
 } from '@/shared';
 import React, { useMemo } from 'react';
 import { useColorScheme } from 'react-native';
@@ -20,6 +21,8 @@ const AppProvider = ({ children }: Props) => {
   const currentThemeMode = useSelector(
     (state: RootState) => state.USER.currentThemeMode,
   );
+
+  useNetworkListener();
 
   const currentTheme = useMemo(() => {
     if (currentThemeMode === ThemeModeOptions.System) {

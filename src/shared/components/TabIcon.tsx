@@ -19,6 +19,7 @@ export const TabIcon = (props: Props) => {
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
     container: {
+      paddingVertical: normalize(12),
       alignItems: 'center',
       justifyContent: 'center',
     },

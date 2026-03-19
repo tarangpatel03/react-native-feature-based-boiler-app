@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { appRoutes, normalize, TabIcon, Theme, useTheme } from '@/shared';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import React, { memo, useMemo } from 'react';
 import { appAssets } from '@/assets';
 import { BottomTabNavigationParamList } from '@/app';
@@ -21,9 +21,12 @@ const BottomTabNavigation = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarHideOnKeyboard: true,
         tabBarStyle: StyleSheet.flatten([
           styles.container,
-          { paddingBottom: bottom + normalize(8) },
+          {
+            paddingBottom: Platform.OS === 'android' ? bottom : bottom,
+          },
         ]),
         tabBarLabelStyle: styles.label,
       }}
@@ -52,7 +55,6 @@ const createStyles = (theme: Theme) => {
   return StyleSheet.create({
     container: {
       borderTopWidth: 1,
-      paddingTop: normalize(8),
       backgroundColor: theme.colors.background,
     },
     label: {

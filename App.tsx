@@ -1,12 +1,13 @@
 import '@/shared/locales/i18n';
-import { AppProvider, RootNavigation, store } from '@/app';
+import { AppProvider, store } from '@/app';
 import { Provider } from 'react-redux';
+import AppBootstrap from '@/app/bootstrap/AppBootStrap';
 
 function App() {
   return (
     <Provider store={store}>
       <AppProvider>
-        <RootNavigation />
+        <AppBootstrap />
       </AppProvider>
     </Provider>
   );
