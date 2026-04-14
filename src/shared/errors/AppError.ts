@@ -8,6 +8,3 @@ export class AppError extends Error {
     this.status = status;
   }
 }
-
-// Example Usage:
-// throw new AppError("Unauthorized", "AUTH_401", 401)

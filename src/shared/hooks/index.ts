@@ -1,4 +1,4 @@
-export * from './useDefounce';
+export * from './useDebounce';
 export * from './useNetworkListener';
 export * from './useTheme';
 export * from './useNetwork';

@@ -27,6 +27,7 @@
     "react-i18next": "^16.5.4",
     "react-native": "0.84.1",
     "react-native-config": "^1.6.1",
+    "react-native-permissions": "^5.5.1",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-screens": "^4.20.0",
     "react-native-shimmer-placeholder": "^2.0.9",

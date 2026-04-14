@@ -1,22 +1,16 @@
+import { HomeStackParamList } from '@/app/navigation';
+import { setUserData } from '@/features/user/store/userSlice';
+import { BAPrimaryButton, normalize, Theme, ThemeModeOptions, useTheme } from '@/shared';
 import { useMemo } from 'react';
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { setUserData } from '@/features/user';
-import {
-  PrimaryButton,
-  Theme,
-  ThemeModeOptions,
-  normalize,
-  useTheme,
-} from '@/shared';
 import { StyleSheet, Text } from 'react-native';
-import { BottomTabNavigationParamList } from '@/app/navigation';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch } from 'react-redux';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-type Props = BottomTabScreenProps<BottomTabNavigationParamList, 'Home'>;
+type Props = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 
-export const HomeScreen = ({ navigation }: Props) => {
+export const HomeScreen = ({}: Props) => {
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
   const styles = useMemo(() => createStyles(theme), [theme]);
@@ -29,15 +23,26 @@ export const HomeScreen = ({ navigation }: Props) => {
     dispatch(setUserData({ currentThemeMode: ThemeModeOptions.Light }));
   };
 
+  /* const goToSecond = () => {
+    // For Same Stack Navigation
+    navigation.navigate('Second');
+
+    // For Crross Stack Navigation
+    navigation.getParent()?.navigate('HomeStack', {
+      screen: 'Second',
+      params: { id: '123' }, // Optional
+    });
+   }; */
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.buttonText}>{t('HOME_SCREEN')}</Text>
-      <PrimaryButton
+      <BAPrimaryButton
         buttonText={'Light Mode'}
         textStyle={styles.buttonText}
         onPress={switchToLightMode}
       />
-      <PrimaryButton
+      <BAPrimaryButton
         buttonText={'Dark Mode'}
         textStyle={styles.buttonText}
         onPress={switchToDarkMode}

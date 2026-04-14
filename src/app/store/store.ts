@@ -9,9 +9,9 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist/es/constants';
-import LoaderSlice from '@/shared/store/loaderSlice';
-import AuthSlice from '@/features/auth/store/authSlice';
-import UserSlice from '@/features/user/store/userSlice';
+import { LoaderSlice } from '@/shared';
+import { AuthSlice } from '@/features/auth';
+import { UserSlice } from '@/features/user';
 
 const persistConfig = {
   key: 'root',
@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

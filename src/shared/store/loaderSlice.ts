@@ -12,13 +12,13 @@ const loaderSlice = createSlice({
   name: 'LOADER',
   initialState,
   reducers: {
-    showLoader: state => {
+    showLoader: (state) => {
       state.loadingCount += 1;
     },
-    hideLoader: state => {
+    hideLoader: (state) => {
       state.loadingCount = Math.max(0, state.loadingCount - 1);
     },
-    resetLoader: state => {
+    resetLoader: (state) => {
       state.loadingCount = 0;
     },
   },

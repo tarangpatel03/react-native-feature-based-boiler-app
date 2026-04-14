@@ -1,12 +1,14 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 
-// Bottom tab screens
-export type BottomTabNavigationParamList = {
+export type HomeStackParamList = {
   Home: undefined;
   Second: undefined;
 };
 
-// Root stack
-export type AppNavigationParamList = {
-  BottomTab: NavigatorScreenParams<BottomTabNavigationParamList>;
+export type BottomTabParamList = {
+  HomeStack: NavigatorScreenParams<HomeStackParamList>;
+};
+
+export type RootStackParamList = {
+  BottomTab: NavigatorScreenParams<BottomTabParamList>;
 };

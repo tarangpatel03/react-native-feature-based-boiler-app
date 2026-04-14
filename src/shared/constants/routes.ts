@@ -1,7 +1,8 @@
 export const appRoutes = {
+  BottomTab: 'BottomTab',
+
   HOME: {
     Home: 'Home',
     Second: 'Second',
   },
-  BottomTab: 'BottomTab',
 } as const;

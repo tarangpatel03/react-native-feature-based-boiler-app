@@ -1,9 +1,9 @@
 import { store } from '@/app';
-import { apiClient, handleApiError, LoaderHandler, logger } from '@/shared';
+import { apiClient, errorHandler, LoaderHandler, logger } from '@/shared';
 import { retryQueue } from './retryQueue';
 
 apiClient.interceptors.request.use(
-  config => {
+  (config) => {
     LoaderHandler.showLoader();
 
     if (__DEV__) {
@@ -23,7 +23,7 @@ apiClient.interceptors.request.use(
 
     return config;
   },
-  error => {
+  (error) => {
     LoaderHandler.hideLoader();
     logger.error('API Error', {
       url: error.config?.url,
@@ -36,7 +36,7 @@ apiClient.interceptors.request.use(
 );
 
 apiClient.interceptors.response.use(
-  response => {
+  (response) => {
     LoaderHandler.hideLoader();
     if (__DEV__) {
       logger.debug('API Response', {
@@ -47,7 +47,7 @@ apiClient.interceptors.response.use(
     }
     return response.data;
   },
-  error => {
+  (error) => {
     LoaderHandler.hideLoader();
     logger.error('API Error', {
       url: error.config?.url,
@@ -68,8 +68,7 @@ apiClient.interceptors.response.use(
       });
     }
 
-    const message = handleApiError(error);
-
-    return Promise.reject(message);
+    errorHandler(error);
+    return Promise.reject(error);
   },
 );

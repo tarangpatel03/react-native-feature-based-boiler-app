@@ -11,6 +11,7 @@ import { useColorScheme } from 'react-native';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app';
 import { ThemeProvider } from './ThemeProvider';
+import Toast from 'react-native-toast-message';
 
 type Props = {
   children: React.ReactNode;
@@ -18,9 +19,7 @@ type Props = {
 
 const AppProvider = ({ children }: Props) => {
   const deviceTheme = useColorScheme();
-  const currentThemeMode = useSelector(
-    (state: RootState) => state.USER.currentThemeMode,
-  );
+  const currentThemeMode = useSelector((state: RootState) => state.USER.currentThemeMode);
 
   useNetworkListener();
 
@@ -35,6 +34,7 @@ const AppProvider = ({ children }: Props) => {
       {children}
       <GlobalLoader />
       <OfflineBanner />
+      <Toast />
     </ThemeProvider>
   );
 };

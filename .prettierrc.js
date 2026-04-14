@@ -1,5 +1,9 @@
 module.exports = {
-  arrowParens: 'avoid',
-  singleQuote: true,
+  root: true,
+  extends: ['@react-native', 'plugin:prettier/recommended'],
   trailingComma: 'all',
+  arrowParens: 'avoid',
+  rules: {
+    'prettier/prettier': 'error',
+  },
 };

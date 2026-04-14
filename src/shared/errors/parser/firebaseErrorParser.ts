@@ -1,5 +1,5 @@
-import { AppError } from '../AppError';
+import { AppError } from '@/shared';
 
 export function parseFirebaseError(error: any): AppError {
-  return new AppError(error.message, error.code, undefined);
+  return new AppError(error?.message || 'Something went wrong', error?.code, undefined);
 }

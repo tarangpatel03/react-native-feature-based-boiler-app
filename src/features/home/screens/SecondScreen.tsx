@@ -2,19 +2,13 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet, Text } from 'react-native';
-import {
-  LoaderHandler,
-  normalize,
-  PrimaryButton,
-  Theme,
-  useTheme,
-} from '@/shared';
-import { BottomTabNavigationParamList } from '@/app/navigation';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { LoaderHandler, normalize, BAPrimaryButton, Theme, useTheme } from '@/shared';
+import { HomeStackParamList } from '@/app/navigation';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-type Props = BottomTabScreenProps<BottomTabNavigationParamList, 'Second'>;
+type Props = NativeStackScreenProps<HomeStackParamList, 'Second'>;
 
-export const SecondScreen = ({ navigation }: Props) => {
+export const SecondScreen = ({}: Props) => {
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
   const styles = useMemo(() => createStyles(theme), [theme]);
@@ -22,7 +16,7 @@ export const SecondScreen = ({ navigation }: Props) => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.buttonText}>{t('SECOND_SCREEN')}</Text>
-      <PrimaryButton
+      <BAPrimaryButton
         buttonText={'Show loader'}
         textStyle={styles.buttonText}
         onPress={() => {

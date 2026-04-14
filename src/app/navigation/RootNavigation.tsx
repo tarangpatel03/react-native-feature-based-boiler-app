@@ -1,31 +1,22 @@
+// app/navigation/RootNavigation.tsx
 import {
   NavigationContainer,
   createNavigationContainerRef,
 } from '@react-navigation/native';
-import React, { memo } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AppNavigationParamList, BottomTabNavigation } from '@/app';
-import { appRoutes } from '@/shared';
+import { RootStackParamList } from './navigation.types';
+import { BottomTabNavigation } from './BottomTabNavigation';
 
-export const navigationRef =
-  createNavigationContainerRef<RootNavigationParamList>();
-const Stack = createNativeStackNavigator<AppNavigationParamList>();
+export const navigationRef = createNavigationContainerRef<RootStackParamList>();
 
-const RootNavigation = () => {
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export const RootNavigation = () => {
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen
-          name={appRoutes.BottomTab}
-          component={BottomTabNavigation}
-        />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name={'BottomTab'} component={BottomTabNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
-export default memo(RootNavigation);

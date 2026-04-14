@@ -1,3 +1,3 @@
 export * from './types/auth.types';
-export * from './store/authSlice';
+export * from './store';
 export * from './utils';
