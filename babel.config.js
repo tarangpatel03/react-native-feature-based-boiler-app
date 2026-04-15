@@ -6,12 +6,10 @@ module.exports = {
       {
         root: ['./src'],
         alias: {
-          '@/app': './src/app',
-          '@/assets': './src/assets',
-          '@/features': './src/features',
-          '@/shared': './src/shared',
+          '@': './src',
         },
       },
     ],
+    'react-native-worklets/plugin',
   ],
 };

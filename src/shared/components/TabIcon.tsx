@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
-import { normalize, Theme, useTheme } from '@/shared';
 import { Image, ImageSourcePropType, StyleSheet, View } from 'react-native';
+import { AppColors, Theme } from '@/shared/themes';
+import { useTheme } from '@/shared/hooks';
+import { normalize } from '@/shared/utils';
 
 type Props = {
   icon: ImageSourcePropType | undefined;
@@ -11,12 +13,16 @@ export const TabIcon = (props: Props) => {
   const styles = useMemo(() => createStyles(theme), [theme]);
   return (
     <View style={styles.container}>
-      <Image source={props.icon} style={StyleSheet.flatten([styles.icon])} />
+      <Image
+        source={props.icon}
+        resizeMode={'contain'}
+        style={StyleSheet.flatten([styles.icon])}
+      />
     </View>
   );
 };
 
-const createStyles = (theme: Theme) =>
+const createStyles = (_theme: Theme) =>
   StyleSheet.create({
     container: {
       paddingVertical: normalize(12),
@@ -26,6 +32,6 @@ const createStyles = (theme: Theme) =>
     icon: {
       width: normalize(24),
       height: normalize(24),
-      tintColor: theme.colors.primaryText,
+      tintColor: AppColors.BLACK,
     },
   });

@@ -1,7 +1,7 @@
-import { LogLevel } from './logger.types';
-import { ENV } from '@/app/config/env';
+import { ENV } from '@/app/config';
 
 const isDev = ENV.APP_ENV === 'development';
+type LogLevel = 'info' | 'warn' | 'error' | 'debug';
 
 type LogPayload = {
   message: string;

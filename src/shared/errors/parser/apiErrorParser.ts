@@ -1,4 +1,4 @@
-import { AppError } from '@/shared';
+import { AppError } from '../AppError';
 
 export function parseApiError(error: any): AppError {
   if (error.response) {

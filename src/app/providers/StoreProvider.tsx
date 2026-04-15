@@ -1,6 +1,6 @@
 import { StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { persistor } from '@/app';
+import { persistor } from '@/app/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 type Props = {

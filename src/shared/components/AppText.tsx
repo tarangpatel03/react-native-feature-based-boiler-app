@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { AppTextProps, normalize } from '@/shared';
 import { StyleSheet, Text, TextStyle } from 'react-native';
+import { normalize } from '@/shared/utils';
+import { AppTextProps } from '@/shared/types';
 
 export const BAAppText = ({
   children,

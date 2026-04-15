@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useAppInitialization } from './useAppInitialization';
-import { RootNavigation } from '@/app';
+import { RootNavigation } from '@/app/navigation';
 
 const AppBootstrap = () => {
   const { isReady } = useAppInitialization();

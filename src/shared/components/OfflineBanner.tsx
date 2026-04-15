@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { AppColors, useNetwork } from '@/shared';
+import { useNetwork } from '@/shared/hooks';
+import { AppColors } from '@/shared/themes';
 
 export const OfflineBanner = () => {
   const { isOffline, showOnline } = useNetwork();

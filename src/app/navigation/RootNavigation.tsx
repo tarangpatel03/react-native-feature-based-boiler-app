@@ -1,4 +1,3 @@
-// app/navigation/RootNavigation.tsx
 import {
   NavigationContainer,
   createNavigationContainerRef,

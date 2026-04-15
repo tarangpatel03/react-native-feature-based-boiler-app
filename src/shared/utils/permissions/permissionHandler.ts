@@ -1,6 +1,6 @@
 import { AppPermissions } from './permissionTypes';
 import { handlePermission } from './permissionService';
-import { showErrorToast } from '@/shared';
+import { showErrorToast } from '@/shared/utils';
 
 export async function requestCameraPermission() {
   const res = await handlePermission(AppPermissions.CAMERA!);
@@ -44,3 +44,10 @@ function getMessage(reason?: string) {
       return 'Permission required';
   }
 }
+
+// Usage example:
+// const granted = await requestCameraPermission();
+
+// if (granted) {
+//   openCamera();
+// }

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UserStateModel } from '@/features/user';
-import { ThemeModeOptions } from '@/shared';
+import { ThemeModeOptions } from '@/shared/types';
 
 const initialState: UserStateModel = {
   id: '',
@@ -22,5 +22,5 @@ export const UserSlice = createSlice({
   },
 });
 
-export const { clearUserData, setUserData } = UserSlice.actions;
+export const UserActions = UserSlice.actions;
 export default UserSlice.reducer;

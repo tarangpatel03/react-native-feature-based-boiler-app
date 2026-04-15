@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ENV } from '@/app';
+import { ENV } from '@/app/config';
 
 export const apiClient = axios.create({
   headers: {

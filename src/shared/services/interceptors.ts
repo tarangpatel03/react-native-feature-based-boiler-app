@@ -1,6 +1,8 @@
-import { store } from '@/app';
-import { apiClient, errorHandler, LoaderHandler, logger } from '@/shared';
+import { store } from '@/app/store';
 import { retryQueue } from './retryQueue';
+import { apiClient } from './apiClient';
+import { LoaderHandler, logger } from '@/shared/utils';
+import { errorHandler } from '@/shared/errors';
 
 apiClient.interceptors.request.use(
   (config) => {

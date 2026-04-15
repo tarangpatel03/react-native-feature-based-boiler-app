@@ -1,5 +1,5 @@
-import { store } from '@/app';
-import { LoaderActions } from '../store/loaderSlice';
+import { store } from '@/app/store';
+import { LoaderActions } from '@/shared/store';
 
 const showLoader = () => {
   store.dispatch(LoaderActions.showLoader());

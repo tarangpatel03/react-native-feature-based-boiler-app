@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { logger } from '@/shared/utils/logger/logger';
+import { logger } from '@/shared/utils';
 
 export const useAppInitialization = () => {
   const [isReady, setIsReady] = useState(false);
@@ -9,12 +9,12 @@ export const useAppInitialization = () => {
       try {
         logger.info('App initialization started');
 
-        // 🔹 placeholder for future:
+        // placeholder for future:
         // - restore auth
         // - load config
         // - prefetch data
 
-        await new Promise(res => setTimeout(res, 300));
+        await new Promise((res) => setTimeout(res, 300));
 
         logger.info('App initialization completed');
       } catch (e) {

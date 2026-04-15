@@ -1,7 +1,7 @@
-export * from './AppError';
-export * from './errorHandler';
-export * from './errorMapper';
-export * from './mapper/firebaseErrorMessages';
-export * from './mapper/httpErrorMessages';
-export * from './parser/firebaseErrorParser';
-export * from './parser/apiErrorParser';
+export { AppError } from './AppError';
+export { errorHandler } from './errorHandler';
+export { mapErrorToMessage } from './errorMapper';
+export { firebaseErrorMessages } from './mapper/firebaseErrorMessages';
+export { httpErrorMessages } from './mapper/httpErrorMessages';
+export { parseFirebaseError } from './parser/firebaseErrorParser';
+export { parseApiError } from './parser/apiErrorParser';

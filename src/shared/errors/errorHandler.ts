@@ -1,9 +1,7 @@
-import {
-  mapErrorToMessage,
-  parseApiError,
-  parseFirebaseError,
-  showErrorToast,
-} from '@/shared';
+import { showErrorToast } from '@/shared/utils';
+import { mapErrorToMessage } from './errorMapper';
+import { parseApiError } from './parser/apiErrorParser';
+import { parseFirebaseError } from './parser/firebaseErrorParser';
 
 export function errorHandler(error: any) {
   let message = 'Something went wrong';

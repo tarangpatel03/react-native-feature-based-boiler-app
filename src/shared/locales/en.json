@@ -1,7 +1,8 @@
 {
-  "HOME_SCREEN": "Home Screen",
-  "SECOND_SCREEN": "Second Screen",
-  "LOADING": "Loading ...",
+  "BOILER": {
+    "THEME_SWITCH": "Theme Switch",
+    "LOADING": "Loading ..."
+  },
   "API_ERRORS": {
     "UNAUTHORIZED": "Unauthorized",
     "SERVER_ERROR": "Server error",

@@ -1,4 +1,4 @@
-import { ThemeMode } from '@/shared';
+import { ThemeMode } from '@/shared/types';
 
 export interface UserStateModel {
   id: string;

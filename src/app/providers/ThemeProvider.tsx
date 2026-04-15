@@ -1,4 +1,4 @@
-import { BaseTheme } from '@/shared';
+import { BaseTheme } from '@/shared/types';
 import React from 'react';
 import StoreProvider from './StoreProvider';
 

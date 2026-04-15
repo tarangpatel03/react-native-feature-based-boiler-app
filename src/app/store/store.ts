@@ -9,7 +9,7 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist/es/constants';
-import { LoaderSlice } from '@/shared';
+import { LoaderSlice } from '@/shared/store';
 import { AuthSlice } from '@/features/auth';
 import { UserSlice } from '@/features/user';
 

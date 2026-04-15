@@ -1,12 +1,11 @@
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/app/store/store';
-import { normalize } from '@/shared';
+import { RootState } from '@/app/store';
+import { AppColors } from '@/shared/themes';
+import { normalize } from '@/shared/utils';
 
 export const GlobalLoader = () => {
-  const loadingCount = useSelector(
-    (state: RootState) => state.LOADER.loadingCount,
-  );
+  const loadingCount = useSelector((state: RootState) => state.LOADER.loadingCount);
 
   if (loadingCount === 0) return null;
 
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.3)',
   },
   activityIndicatorWrapper: {
-    backgroundColor: 'white',
+    backgroundColor: AppColors.WHITE,
     height: normalize(100),
     width: normalize(100),
     borderRadius: normalize(10),

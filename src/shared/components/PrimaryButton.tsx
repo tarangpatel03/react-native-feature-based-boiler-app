@@ -1,7 +1,9 @@
 import React, { useMemo } from 'react';
 import { Pressable, Text, StyleSheet, View, ActivityIndicator } from 'react-native';
 import FastImage from '@d11/react-native-fast-image';
-import { BaseTheme, ButtonBaseProps, normalize, useTheme } from '@/shared';
+import { BaseTheme, ButtonBaseProps } from '@/shared/types';
+import { useTheme } from '@/shared/hooks';
+import { normalize } from '@/shared/utils';
 
 export const BAPrimaryButton = ({
   buttonText,

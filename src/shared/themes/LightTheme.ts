@@ -1,4 +1,4 @@
-import { AppColors } from '@/shared/themes';
+import { AppColors } from './colors';
 import createTheme from './createTheme';
 
 export const LightTheme = createTheme({

@@ -1,3 +1,4 @@
-export * from './colors';
-export * from './DarkTheme';
-export * from './LightTheme';
+export { AppColors } from './colors';
+export { DarkTheme } from './DarkTheme';
+export { LightTheme } from './LightTheme';
+export type { Theme } from './LightTheme';

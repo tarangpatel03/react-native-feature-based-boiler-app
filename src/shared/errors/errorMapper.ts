@@ -1,17 +1,19 @@
-import { AppError, firebaseErrorMessages, httpErrorMessages } from '@/shared';
+import { AppError } from './AppError';
+import { firebaseErrorMessages } from './mapper/firebaseErrorMessages';
+import { httpErrorMessages } from './mapper/httpErrorMessages';
 
 export function mapErrorToMessage(error: AppError): string {
-  // ✅ Firebase mapping
+  // Firebase mapping
   if (error.code && firebaseErrorMessages[error.code]) {
     return firebaseErrorMessages[error.code];
   }
 
-  // ✅ HTTP mapping
+  // HTTP mapping
   if (error.status && httpErrorMessages[error.status]) {
     return httpErrorMessages[error.status];
   }
 
-  // ✅ Backend custom message (MOST IMPORTANT)
+  // Backend custom message
   if (error.message && error.message.trim().length > 0) {
     return error.message;
   }
