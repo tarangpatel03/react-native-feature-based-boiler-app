@@ -1,8 +1,7 @@
 import { AppPermissions } from './permissionTypes';
 import { handlePermission } from './permissionService';
-import { showErrorToast } from '@/shared/lib';
 
-export async function requestCameraPermission() {
+export async function requestCameraPermission(showErrorToast: (msg: string) => void) {
   const res = await handlePermission(AppPermissions.CAMERA!);
 
   if (!res.granted) {
@@ -12,7 +11,7 @@ export async function requestCameraPermission() {
   return res.granted;
 }
 
-export async function requestPhotoPermission() {
+export async function requestPhotoPermission(showErrorToast: (msg: string) => void) {
   const res = await handlePermission(AppPermissions.PHOTO!);
 
   if (!res.granted) {
@@ -22,7 +21,7 @@ export async function requestPhotoPermission() {
   return res.granted;
 }
 
-export async function requestLocationPermission() {
+export async function requestLocationPermission(showErrorToast: (msg: string) => void) {
   const res = await handlePermission(AppPermissions.LOCATION!);
 
   if (!res.granted) {

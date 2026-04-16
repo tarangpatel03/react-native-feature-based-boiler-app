@@ -1,7 +1,6 @@
 import { store } from '@/app/store';
 import { apiClient, retryQueue } from '@/shared/network';
 import { LoaderHandler, logger } from '@/shared/lib';
-import { errorHandler } from '@/shared/errors';
 
 apiClient.interceptors.request.use(
   (config) => {
@@ -69,7 +68,6 @@ apiClient.interceptors.response.use(
       });
     }
 
-    errorHandler(error);
     return Promise.reject(error);
   },
 );
