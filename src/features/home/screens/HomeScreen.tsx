@@ -5,46 +5,32 @@ import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useBottomSheet, useTheme } from '@/shared/hooks';
+import { useBottomSheet, useTheme, useToast } from '@/shared/hooks';
 import { Theme } from '@/shared/themes/LightTheme';
 import { ThemeModeOptions } from '@/shared/types';
 import { BAOutlineButton, BAPrimaryButton, BaseBottomSheet } from '@/shared/components';
-import {
-  LoaderHandler,
-  normalize,
-  showErrorToast,
-  showSuccessToast,
-} from '@/shared/utils';
+import { LoaderHandler, normalize } from '@/shared/utils';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 
-export const HomeScreen = ({}: Props) => {
+export const HomeScreen = ({ navigation }: Props) => {
   const theme = useTheme<Theme>();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const dispatch = useDispatch();
 
   const sheet = useBottomSheet<{ orderId: string }, boolean>();
+  const { showErrorToast, showSuccessToast, showInfoToast } = useToast();
 
-  const handleAction = async () => {
-    const result = await sheet.open({ orderId: '123' });
-
-    if (result) {
-      showSuccessToast('Confirmed');
-    } else {
-      showErrorToast('Cancelled / dismissed');
-    }
-  };
-
-  /* const goToSecond = () => {
+  const goToSecond = () => {
     // For Same Stack Navigation
     navigation.navigate('Second');
 
     // For Crross Stack Navigation
-    navigation.getParent()?.navigate('HomeStack', {
-      screen: 'Second',
-      params: { id: '123' }, // Optional
-    });
-   }; */
+    // navigation.getParent()?.navigate('HomeStack', {
+    //   screen: 'Second',
+    //   params: { id: '123' }, // Optional
+    // });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -94,6 +80,11 @@ export const HomeScreen = ({}: Props) => {
           textStyle={styles.buttonText}
           onPress={() => showErrorToast('Error')}
         />
+        <BAOutlineButton
+          buttonText={'Info Toast'}
+          textStyle={styles.buttonText}
+          onPress={() => showInfoToast('Info')}
+        />
       </View>
       <BaseBottomSheet ref={sheet.ref} onDismiss={sheet.onDismiss}>
         <BAPrimaryButton
@@ -111,6 +102,11 @@ export const HomeScreen = ({}: Props) => {
           }}
         />
       </BaseBottomSheet>
+      <BAOutlineButton
+        buttonText={'Goto Second Screen'}
+        textStyle={styles.buttonText}
+        onPress={goToSecond}
+      />
     </SafeAreaView>
   );
 };

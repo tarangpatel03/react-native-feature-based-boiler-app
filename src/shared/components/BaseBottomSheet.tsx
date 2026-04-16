@@ -6,6 +6,7 @@ import {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import { StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export type BaseBottomSheetRef = {
   open: () => void;
@@ -21,6 +22,7 @@ type Props = {
 export const BaseBottomSheet = forwardRef<BaseBottomSheetRef, Props>(
   ({ children, snapPoints = ['40%'], onDismiss }, ref) => {
     const sheetRef = React.useRef<BottomSheetModal>(null);
+    const insets = useSafeAreaInsets();
 
     const memoSnapPoints = useMemo(() => snapPoints, [snapPoints]);
 
@@ -59,7 +61,9 @@ export const BaseBottomSheet = forwardRef<BaseBottomSheetRef, Props>(
         keyboardBlurBehavior={'restore'}
         onDismiss={onDismiss}
       >
-        <BottomSheetView style={styles.container}>{children}</BottomSheetView>
+        <BottomSheetView style={[styles.container, { paddingBottom: insets.bottom }]}>
+          {children}
+        </BottomSheetView>
       </BottomSheetModal>
     );
   },

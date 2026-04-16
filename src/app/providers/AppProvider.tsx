@@ -8,6 +8,7 @@ import { useNetworkListener } from '@/shared/hooks';
 import { ThemeModeOptions } from '@/shared/types';
 import { DarkTheme, LightTheme } from '@/shared/themes';
 import { GlobalLoader, OfflineBanner } from '@/shared/components';
+import { toastConfig } from '@/shared/components/toastConfig';
 
 type Props = {
   children: React.ReactNode;
@@ -34,7 +35,7 @@ const AppProvider = ({ children }: Props) => {
       {children}
       <GlobalLoader />
       <OfflineBanner />
-      <Toast />
+      <Toast config={toastConfig} />
     </ThemeProvider>
   );
 };
