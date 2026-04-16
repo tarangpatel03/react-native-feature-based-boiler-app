@@ -1,12 +1,8 @@
-import {
-  NavigationContainer,
-  createNavigationContainerRef,
-} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './navigation.types';
 import { BottomTabNavigation } from './BottomTabNavigation';
-
-export const navigationRef = createNavigationContainerRef<RootStackParamList>();
+import { navigationRef } from '@/shared/navigation';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

@@ -3,7 +3,7 @@ import { Pressable, Text, StyleSheet, View, ActivityIndicator } from 'react-nati
 import FastImage from '@d11/react-native-fast-image';
 import { BaseTheme, ButtonBaseProps } from '@/shared/types';
 import { useTheme } from '@/shared/hooks';
-import { normalize } from '@/shared/utils';
+import { normalize } from '@/shared/lib';
 
 export const BAPrimaryButton = ({
   buttonText,

@@ -1,4 +1,4 @@
-import { showErrorToast } from '@/shared/utils';
+import { showErrorToast } from '@/shared/lib';
 import { mapErrorToMessage } from './errorMapper';
 import { parseApiError } from './parser/apiErrorParser';
 import { parseFirebaseError } from './parser/firebaseErrorParser';

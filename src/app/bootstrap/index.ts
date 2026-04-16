@@ -1,2 +1,2 @@
 export { default as AppBootstrap } from './AppBootstrap';
-export * from './useAppInitialization';
+export { useAppInitialization } from './useAppInitialization';

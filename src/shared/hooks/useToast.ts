@@ -1,6 +1,6 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
-import { normalize } from '@/shared/utils';
+import { normalize } from '@/shared/lib';
 
 export const useToast = () => {
   const insets = useSafeAreaInsets();

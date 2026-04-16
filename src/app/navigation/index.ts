@@ -1,3 +1,3 @@
 export * from './navigation.types';
-export * from './BottomTabNavigation';
-export * from './RootNavigation';
+export { BottomTabNavigation } from './BottomTabNavigation';
+export { RootNavigation } from './RootNavigation';

@@ -23,6 +23,16 @@ export const LightTheme = createTheme({
       text: '#1E3A8A',
     },
   },
+  input: {
+    text: '#000000',
+    placeholder: '#8E8E93',
+    background: '#FFFFFF',
+    border: '#D1D1D6',
+    focusBorder: '#3B82F6',
+    error: '#EF4444',
+    label: '#3C3C43',
+    filledBackground: '#F2F2F7',
+  },
 });
 
 export type Theme = typeof LightTheme;

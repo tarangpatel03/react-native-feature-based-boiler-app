@@ -25,4 +25,14 @@ export const DarkTheme = createTheme({
       text: '#93C5FD',
     },
   },
+  input: {
+    text: '#FFFFFF',
+    placeholder: '#8E8E93',
+    background: '#1C1C1E',
+    border: '#3A3A3C',
+    focusBorder: '#60A5FA',
+    error: '#F87171',
+    label: '#EBEBF5',
+    filledBackground: '#2C2C2E',
+  },
 });

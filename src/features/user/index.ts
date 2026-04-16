@@ -1,2 +1,2 @@
 export * from './types/user.types';
-export * from './store';
+export { UserActions, UserSlice } from './store';

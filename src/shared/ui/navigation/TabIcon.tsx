@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Image, ImageSourcePropType, StyleSheet, View } from 'react-native';
 import { AppColors, Theme } from '@/shared/themes';
 import { useTheme } from '@/shared/hooks';
-import { normalize } from '@/shared/utils';
+import { normalize } from '@/shared/lib';
 
 type Props = {
   icon: ImageSourcePropType | undefined;

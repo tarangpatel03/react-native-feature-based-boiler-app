@@ -1,6 +1,6 @@
 import { AppPermissions } from './permissionTypes';
 import { handlePermission } from './permissionService';
-import { showErrorToast } from '@/shared/utils';
+import { showErrorToast } from '@/shared/lib';
 
 export async function requestCameraPermission() {
   const res = await handlePermission(AppPermissions.CAMERA!);

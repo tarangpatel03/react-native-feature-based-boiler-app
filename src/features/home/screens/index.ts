@@ -1,2 +1,2 @@
-export * from './HomeScreen';
-export * from './SecondScreen';
+export { HomeScreen } from './HomeScreen';
+export { SecondScreen } from './SecondScreen';

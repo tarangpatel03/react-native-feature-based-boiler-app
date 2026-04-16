@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useNetwork } from './useNetwork';
-import { apiClient, retryQueue } from '@/shared/services';
-import { logger } from '@/shared/utils';
+import { apiClient, retryQueue } from '@/shared/network';
+import { logger } from '@/shared/lib';
 
 export const useNetworkListener = () => {
   const { isOffline } = useNetwork();

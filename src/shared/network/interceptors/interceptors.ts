@@ -1,7 +1,6 @@
 import { store } from '@/app/store';
-import { retryQueue } from './retryQueue';
-import { apiClient } from './apiClient';
-import { LoaderHandler, logger } from '@/shared/utils';
+import { apiClient, retryQueue } from '@/shared/network';
+import { LoaderHandler, logger } from '@/shared/lib';
 import { errorHandler } from '@/shared/errors';
 
 apiClient.interceptors.request.use(

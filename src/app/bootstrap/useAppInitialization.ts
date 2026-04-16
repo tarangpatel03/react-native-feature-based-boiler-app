@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { logger } from '@/shared/utils';
+import { logger } from '@/shared/lib';
 
 export const useAppInitialization = () => {
   const [isReady, setIsReady] = useState(false);

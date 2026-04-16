@@ -1,5 +1,5 @@
 import { useRef, useCallback, useEffect } from 'react';
-import { BaseBottomSheetRef } from '@/shared/components';
+import { BaseBottomSheetRef } from '@/shared/ui';
 
 type Resolver<T> = (value: T | null) => void;
 

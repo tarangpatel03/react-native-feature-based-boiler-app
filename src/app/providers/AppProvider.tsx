@@ -7,8 +7,7 @@ import Toast from 'react-native-toast-message';
 import { useNetworkListener } from '@/shared/hooks';
 import { ThemeModeOptions } from '@/shared/types';
 import { DarkTheme, LightTheme } from '@/shared/themes';
-import { GlobalLoader, OfflineBanner } from '@/shared/components';
-import { toastConfig } from '@/shared/components/toastConfig';
+import { GlobalLoader, OfflineBanner, toastConfig } from '@/shared/ui';
 
 type Props = {
   children: React.ReactNode;

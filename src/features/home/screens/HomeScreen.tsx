@@ -8,8 +8,8 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useBottomSheet, useTheme, useToast } from '@/shared/hooks';
 import { Theme } from '@/shared/themes/LightTheme';
 import { ThemeModeOptions } from '@/shared/types';
-import { BAOutlineButton, BAPrimaryButton, BaseBottomSheet } from '@/shared/components';
-import { LoaderHandler, normalize } from '@/shared/utils';
+import { BAOutlineButton, BAPrimaryButton, BaseBottomSheet } from '@/shared/ui';
+import { LoaderHandler, normalize } from '@/shared/lib';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 

@@ -2,7 +2,7 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import { AppColors } from '@/shared/themes';
-import { normalize } from '@/shared/utils';
+import { normalize } from '@/shared/lib';
 
 export const GlobalLoader = () => {
   const loadingCount = useSelector((state: RootState) => state.LOADER.loadingCount);

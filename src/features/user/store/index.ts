@@ -1,2 +1,2 @@
 export { default as UserSlice } from './userSlice';
-export * from './userSlice';
+export { UserActions } from './userSlice';

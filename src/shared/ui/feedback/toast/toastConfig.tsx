@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { normalize } from '@/shared/utils';
-import { useTheme } from '../hooks';
-import { AppColors, Theme } from '../themes';
+import { normalize } from '@/shared/lib';
+import { useTheme } from '../../../hooks';
+import { AppColors, Theme } from '../../../themes';
 
 const BaseToast = ({
   text1,

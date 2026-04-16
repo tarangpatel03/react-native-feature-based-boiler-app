@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabParamList } from './navigation.types';
 import { HomeNavigator } from '@/features/home';
-import { TabIcon } from '@/shared/components';
+import { TabIcon } from '@/shared/ui';
 import { appAssets } from '@/assets';
 import { ImageSourcePropType } from 'react-native';
 
