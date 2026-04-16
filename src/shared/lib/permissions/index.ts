@@ -1,3 +1,7 @@
 export * from './permissionHandler';
-export * from './permissionService';
-export * from './permissionTypes';
+export {
+  checkPermission,
+  handlePermission,
+  requestPermission,
+} from './permissionService';
+export { AppPermissions } from './permission.types';

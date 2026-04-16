@@ -1,28 +1,8 @@
-import { AppPermissions } from './permissionTypes';
+import { AppPermissions } from './permission.types';
 import { handlePermission } from './permissionService';
 
 export async function requestCameraPermission(showErrorToast: (msg: string) => void) {
   const res = await handlePermission(AppPermissions.CAMERA!);
-
-  if (!res.granted) {
-    showErrorToast(getMessage(res.reason));
-  }
-
-  return res.granted;
-}
-
-export async function requestPhotoPermission(showErrorToast: (msg: string) => void) {
-  const res = await handlePermission(AppPermissions.PHOTO!);
-
-  if (!res.granted) {
-    showErrorToast(getMessage(res.reason));
-  }
-
-  return res.granted;
-}
-
-export async function requestLocationPermission(showErrorToast: (msg: string) => void) {
-  const res = await handlePermission(AppPermissions.LOCATION!);
 
   if (!res.granted) {
     showErrorToast(getMessage(res.reason));
@@ -43,10 +23,3 @@ function getMessage(reason?: string) {
       return 'Permission required';
   }
 }
-
-// Usage example:
-// const granted = await requestCameraPermission();
-
-// if (granted) {
-//   openCamera();
-// }

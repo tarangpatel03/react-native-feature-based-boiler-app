@@ -1,11 +1,9 @@
 import { store } from '@/app/store';
 import { apiClient, retryQueue } from '@/shared/network';
-import { LoaderHandler, logger } from '@/shared/lib';
+import { logger } from '@/shared/lib';
 
 apiClient.interceptors.request.use(
   (config) => {
-    LoaderHandler.showLoader();
-
     if (__DEV__) {
       logger.debug('API Request', {
         url: config.url,
@@ -24,7 +22,6 @@ apiClient.interceptors.request.use(
     return config;
   },
   (error) => {
-    LoaderHandler.hideLoader();
     logger.error('API Error', {
       url: error.config?.url,
       status: error.response?.status,
@@ -37,7 +34,6 @@ apiClient.interceptors.request.use(
 
 apiClient.interceptors.response.use(
   (response) => {
-    LoaderHandler.hideLoader();
     if (__DEV__) {
       logger.debug('API Response', {
         url: response.config.url,
@@ -48,7 +44,6 @@ apiClient.interceptors.response.use(
     return response.data;
   },
   (error) => {
-    LoaderHandler.hideLoader();
     logger.error('API Error', {
       url: error.config?.url,
       status: error.response?.status,

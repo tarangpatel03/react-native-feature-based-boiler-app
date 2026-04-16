@@ -8,6 +8,8 @@ import { useNetworkListener } from '@/shared/hooks';
 import { ThemeModeOptions } from '@/shared/types';
 import { DarkTheme, LightTheme } from '@/shared/themes';
 import { GlobalLoader, OfflineBanner, toastConfig } from '@/shared/ui';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/shared/network';
 
 type Props = {
   children: React.ReactNode;
@@ -27,15 +29,17 @@ const AppProvider = ({ children }: Props) => {
   }, [deviceTheme, currentThemeMode]);
 
   return (
-    <ThemeProvider theme={currentTheme}>
-      <StatusBar
-        barStyle={currentTheme === DarkTheme ? 'light-content' : 'dark-content'}
-      />
-      {children}
-      <GlobalLoader />
-      <OfflineBanner />
-      <Toast config={toastConfig} />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={currentTheme}>
+        <StatusBar
+          barStyle={currentTheme === DarkTheme ? 'light-content' : 'dark-content'}
+        />
+        {children}
+        <GlobalLoader />
+        <OfflineBanner />
+        <Toast config={toastConfig} />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 

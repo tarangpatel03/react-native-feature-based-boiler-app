@@ -174,4 +174,3 @@ These helpers:
 - show an error toast when permission is denied or blocked
 
 If you need custom handling, the shared permission service also exposes `checkPermission` and `requestPermission` for manual control.
-s
