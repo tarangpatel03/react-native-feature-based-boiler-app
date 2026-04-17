@@ -1,4 +1,4 @@
-import '@/shared/locales/i18n';
+import '@/shared/i18n/i18n';
 import { Provider } from 'react-redux';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { store } from '@/app/store';

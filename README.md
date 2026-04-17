@@ -1,104 +1,153 @@
-# Feature-Based Boiler App
+# Feature-Based Boilerplate App
 
-A React Native starter app built around a modular, feature-based architecture. The repository is designed for fast development of mobile apps with clear separation between application setup, feature modules, shared utilities, and assets.
+A React Native starter app built around a scalable, feature-based architecture.
 
-## Project Overview
+This boilerplate is designed to help you ship apps faster while keeping the codebase predictable, modular, and easy to extend.
 
-This project uses a feature-based folder structure to keep each app domain self-contained. Each feature can include its screens, components, hooks, navigation, services, store logic, types, and utilities. Shared logic and UI components are stored in the `src/shared` area.
+## What this boilerplate includes
 
-## Folder Structure
+- Feature-based folder structure
+- App bootstrap and provider setup
+- Typed navigation, API, and reusable UI primitives
+- Axios + TanStack Query setup
+- Global loader, toast, logger, and permission helpers
+- Environment manager
+- Offline retry queue support
+- Light/Dark theme support
+- Localization support
+- External integration layer (Firebase, AWS, etc.)
 
-### Root folders
+## Folder structure
 
-- `scripts/` - helper scripts for project generation and automation.
-- `src/` - main app source code and feature modules.
-- `assets/` - shared assets such as images, fonts, icons, and animations.
-- `App.tsx` / `index.js` - app entry points for React Native.
+```txt
+src/
+  app/
+    bootstrap/
+    config/
+    navigation/
+    providers/
+    store/
 
-### `src/` folders
+  assets/
+    animations/
+    fonts/
+    icons/
+    images/
+    index.ts
 
-- `src/app/` - app bootstrap, root navigation setup, providers, and app-level configuration.
-- `src/assets/` - typed asset exports and shared media references used throughout the app.
-- `src/features/` - feature modules; each feature is isolated and contains its own implementation details.
-- `src/shared/` - shared configuration, form logic, hooks, integrations, network utilities, store helpers, themes, and reusable UI elements.
+  entities/
+    <entity-name>/
 
-### Feature module structure
+  features/
+    <feature-name>/
 
-Each feature under `src/features/` follows the same pattern:
+  modules/
+    <module-name>/
 
-- `components/` - feature-specific UI components.
-- `hooks/` - custom hooks used only by that feature.
-- `navigation/` - navigation definitions and route helpers for the feature.
-- `screens/` - feature screens and page-level components.
-- `services/` - feature-specific services, API calls, or business logic.
-- `store/` - feature-specific Redux slices or state management logic.
-- `types/` - TypeScript interfaces and types for the feature.
-- `utils/` - utilities and helpers used by the feature.
-- `index.ts` - feature entry export file.
-
-## Add New Features
-
-This repository includes a generator script to create a new feature module with the standard folder layout.
-
-### Create a new feature
-
-1. Make sure the script is executable (only required once):
-
-```bash
-chmod +x scripts/generateFeature.js
+  shared/
+    config/
+    errors/
+    form/
+    hooks/
+    integrations/
+    lib/
+    navigation/
+    network/
+    store/
+    theme/
+    types/
+    ui/
+    utils/
 ```
 
-2. Run the generator with the new feature name:
+## Layer overview
+
+| Layer      | Responsibility                                          |
+| ---------- | ------------------------------------------------------- |
+| `app`      | bootstrap, providers, root navigation, app-level wiring |
+| `features` | user capabilities and screen-level flows                |
+| `entities` | reusable domain models and domain UI                    |
+| `modules`  | multi-step cross-feature workflows                      |
+| `shared`   | reusable technical foundation                           |
+
+Dependency direction:
+
+```txt
+modules -> features -> entities -> shared
+app -> everything
+```
+
+## Feature structure
+
+Each feature can contain:
+
+```txt
+features/<feature-name>/
+  components/
+  hooks/
+  navigation/
+  queries/
+  screens/
+  services/
+  store/
+  types/
+  utils/
+  index.ts
+```
+
+Use `index.ts` as the public API of the feature.
+
+## Documentation
+
+Project docs are split by use case:
+
+- [Architecture Guidelines](docs/architecture/ARCHITECTURE_GUIDELINES.md)
+- [Import Rules](docs/architecture/IMPORT_RULES.md)
+- [Feature Creation Guide](docs/features/FEATURE_CREATION_GUIDE.md)
+- [Entities and Modules Guide](docs/architecture/ENTITIES_AND_MODULES.md)
+- [TanStack Query Guide](docs/guides/TANSTACK_QUERY_GUIDE.md)
+- [Remote Config Guide](docs/setup/REMOTE_CONFIG_GUIDE.md)
+- [Developer CheatSheet](docs/guides/DEVELOPER_CHEATSHEET.md)
+
+## Add a new feature
+
+Generate a feature using the project script:
 
 ```bash
 yarn generate <feature-name>
 ```
 
-This creates a new folder under `src/features/<feature-name>/` with the standard subfolders and starter index files.
+This creates the standard feature folder layout under `src/features/<feature-name>/`.
 
-## Best Practices
+## Best practices
 
-- Keep feature logic self-contained in `src/features/` unless it is truly reusable.
-- Put UI components or utilities used by multiple features into `src/shared/`.
-- Keep app-wide navigation, providers, and configuration inside `src/app/`.
-- Use `yarn generate <feature-name>` to maintain consistency for new feature scaffolding.
+- Keep feature logic inside its own feature unless it is truly reusable.
+- Move reusable domain code into `entities`.
+- Create `modules` only for complex multi-step workflows.
+- Put generic UI and technical helpers in `shared`.
+- Do not deep-import from another feature.
+- Keep query keys centralized using query key factories.
+- Use remote config for feature flags, not environment files.
 
-## Additional Usage
+## Common examples
 
-### 1. Navigate within and outside feature screens
-
-- Inside a screen component, use the React Navigation `navigation` prop:
-
-  - `navigation.navigate('RouteName', params)`
-  - `navigation.goBack()`
-  - `navigation.replace('RouteName')`
-
-  ```ts
-  navigation.getParent()?.navigate('StackName', {
-    screen: 'RouteName',
-    params: { params }, // Optional
-  });
-  ```
-
-- Outside screen components, use the shared navigation service from `src/shared/navigation/navigationService.ts`:
+### Navigation inside screens
 
 ```ts
-import { navigate } from '@/shared/navigation/navigationService';
+navigation.navigate('RouteName', params);
+navigation.goBack();
+navigation.replace('RouteName');
+```
+
+### Navigation outside screens
+
+```ts
+import { navigate } from '@/shared/navigation';
 
 navigate('SomeScreen', { id: 123 });
 ```
 
-This helper checks whether the navigation container is ready before navigating, so it is safe to call from hooks, services, or business logic outside a screen.
-
-### 2. Use form input
-
-This project uses the shared form helpers in `src/shared/form`.
-
-- Create a form instance with `useForm(...)`.
-- Use `useField(form, 'fieldName')` to bind input state.
-- Call `form.handleSubmit(onValid)` to validate and submit.
-
-Example:
+### Form usage
 
 ```ts
 const form = useForm({
@@ -106,71 +155,24 @@ const form = useForm({
     value: '',
     validators: [required('Email Required'), email()],
   },
-  password: {
-    value: '',
-    validators: [required('Password Required'), minLength(6)],
-  },
 });
 
 const emailField = useField(form, 'email');
-const passwordField = useField(form, 'password');
-
-<AppInput
-  label="Email"
-  value={emailField.value}
-  onChangeText={emailField.onChangeText}
-  onBlur={emailField.onBlur}
-  error={emailField.error}
-/>;
-
-const onSubmit = () => {
-  form.handleSubmit((values) => {
-    // submit valid values
-  });
-};
 ```
 
-Validation runs automatically on blur for fields, and `handleSubmit` validates all fields before calling your callback.
-
-### 3. Use logger properly
-
-Import the shared logger from `@/shared/lib`:
+### Logger usage
 
 ```ts
 import { logger } from '@/shared/lib';
 
 logger.info('User loaded', { userId });
-logger.warn('Missing profile data');
 logger.error('Save failed', { error });
-logger.debug('Request payload', { payload });
 ```
 
-- In development, all log levels print to the console.
-- In production, only `error` logs are printed by default.
-- Avoid logging sensitive user data.
-- Use structured data objects for easier debugging.
-
-### 4. Handle permissions
-
-Use the built-in permission helpers in `src/shared/lib/permissions` such as:
+### Permission usage
 
 ```ts
-import {
-  requestCameraPermission,
-  requestPhotoPermission,
-  requestLocationPermission,
-} from '@/shared/lib';
+import { requestCameraPermission } from '@/shared/lib';
 
 const granted = await requestCameraPermission();
-if (granted) {
-  // safe to access camera
-}
 ```
-
-These helpers:
-
-- translate platform permission constants
-- check and request permissions
-- show an error toast when permission is denied or blocked
-
-If you need custom handling, the shared permission service also exposes `checkPermission` and `requestPermission` for manual control.
