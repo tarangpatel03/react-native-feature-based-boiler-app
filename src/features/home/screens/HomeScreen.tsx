@@ -1,15 +1,20 @@
 import { HomeStackParamList } from '@/app/navigation';
-import { UserActions } from '@/features/user';
+import { UserActions } from '@/entities/user';
 import { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useBottomSheet, useTheme, useToast } from '@/shared/hooks';
+import { useBottomSheet, useTheme } from '@/shared/hooks';
 import { Theme } from '@/shared/themes/LightTheme';
 import { ThemeModeOptions } from '@/shared/types';
-import { BAOutlineButton, BAPrimaryButton, BaseBottomSheet } from '@/shared/ui';
+import {
+  AppScreen,
+  BAOutlineButton,
+  BAPrimaryButton,
+  BaseBottomSheet,
+} from '@/shared/ui';
 import { LoaderHandler, normalize } from '@/shared/lib';
+import { showErrorToast, showInfoToast, showSuccessToast } from '@/shared/toast';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'Home'>;
 
@@ -19,13 +24,12 @@ export const HomeScreen = ({ navigation }: Props) => {
   const dispatch = useDispatch();
 
   const sheet = useBottomSheet<{ orderId: string }, boolean>();
-  const { showErrorToast, showSuccessToast, showInfoToast } = useToast();
 
   const goToSecond = () => {
     // For Same Stack Navigation
     navigation.navigate('Second');
 
-    // For Crross Stack Navigation
+    // For Cross Stack Navigation
     // navigation.getParent()?.navigate('HomeStack', {
     //   screen: 'Second',
     //   params: { id: '123' }, // Optional
@@ -33,7 +37,7 @@ export const HomeScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <AppScreen contentContainerStyle={styles.container}>
       <View style={styles.themeSwitchContainer}>
         <BAOutlineButton
           buttonText={'Light Mode'}
@@ -107,7 +111,7 @@ export const HomeScreen = ({ navigation }: Props) => {
         textStyle={styles.buttonText}
         onPress={goToSecond}
       />
-    </SafeAreaView>
+    </AppScreen>
   );
 };
 
@@ -118,7 +122,6 @@ const createStyles = (theme: Theme) => {
       gap: normalize(10),
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: theme.colors.background,
     },
     themeSwitchContainer: {
       flexDirection: 'row',

@@ -92,3 +92,11 @@ yarn generate <feature-name>
 `home` is usually a composition feature.
 
 It can assemble public pieces from other domains but should not contain all their business logic.
+
+## Import custom script
+
+run with correct file path:
+
+```zsh
+chmod +x scripts/generateFeature.js
+```

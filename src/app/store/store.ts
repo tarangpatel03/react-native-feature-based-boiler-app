@@ -11,7 +11,7 @@ import {
 } from 'redux-persist/es/constants';
 import { LoaderSlice } from '@/shared/store';
 import { AuthSlice } from '@/features/auth';
-import { UserSlice } from '@/features/user';
+import { UserSlice } from '@/entities/user';
 
 const persistConfig = {
   key: 'root',
@@ -37,3 +37,4 @@ export const store = configureStore({
 });
 export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

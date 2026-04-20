@@ -3,8 +3,8 @@ import { getUsers } from '../services';
 
 export const useUsers = () => {
   return useQuery({
-    queryKey: ['users'],
+    queryKey: ['home'],
     queryFn: getUsers,
-    enabled: false, // important (manual trigger)
+    enabled: true, // true: auto fetch on screen focus
   });
 };

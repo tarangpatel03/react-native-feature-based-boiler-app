@@ -1,6 +1,9 @@
 import { store } from '@/app/store';
 import { apiClient, retryQueue } from '@/shared/network';
 import { logger } from '@/shared/lib';
+import { errorHandler } from '@/shared/errors';
+
+console.log('interceptor file loaded');
 
 apiClient.interceptors.request.use(
   (config) => {
@@ -35,13 +38,20 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => {
     if (__DEV__) {
+      // logger.debug('API Response', {
+      //   url: response.config.url,
+      //   status: response.status,
+      //   data: response.data,
+      // });
       logger.debug('API Response', {
         url: response.config.url,
         status: response.status,
-        data: response.data,
+        dataPreview: Array.isArray(response.data)
+          ? `Array(${response.data.length})`
+          : response.data,
       });
     }
-    return response.data;
+    return response;
   },
   (error) => {
     logger.error('API Error', {
@@ -62,7 +72,7 @@ apiClient.interceptors.response.use(
         retryQueue.add({ config, resolve, reject });
       });
     }
-
+    errorHandler(error);
     return Promise.reject(error);
   },
 );

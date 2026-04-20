@@ -2,9 +2,9 @@ const isDev = true;
 
 export const ENV = {
   APP_ENV: isDev ? 'development' : 'production',
-  X_API_TOKEN: isDev ? '' : '',
+  X_API_TOKEN: isDev ? '93d147f1-6d37-4256-9888-101c567d18f2' : '',
   API_URL: isDev
-    ? 'https://jsonplaceholder.typicode.com'
+    ? 'https://sandbox.discountbrosauctions.com/api'
     : 'https://jsonplaceholder.typicode.com',
 };
 

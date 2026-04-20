@@ -6,7 +6,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
-    "generate": "node scripts/generateFeature.js",
+    "generate:feature": "node scripts/generateFeature.js",
+    "generate:entity": "node scripts/generateEntity.js",
     "start": "react-native start",
     "test": "jest"
   },
@@ -29,6 +30,7 @@
     "react-native": "0.84.1",
     "react-native-config": "^1.6.1",
     "react-native-gesture-handler": "^2.31.1",
+    "react-native-linear-gradient": "^2.8.3",
     "react-native-permissions": "^5.5.1",
     "react-native-reanimated": "^4.3.0",
     "react-native-safe-area-context": "^5.5.2",

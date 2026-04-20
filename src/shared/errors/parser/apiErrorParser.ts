@@ -3,7 +3,7 @@ import { AppError } from '../AppError';
 export function parseApiError(error: any): AppError {
   if (error.response) {
     const message =
-      error.response.data?.message || // ✅ backend custom
+      error.response.data?.message || // backend custom
       error.response.data?.error || // optional fallback
       error.message || // axios fallback
       'Something went wrong';

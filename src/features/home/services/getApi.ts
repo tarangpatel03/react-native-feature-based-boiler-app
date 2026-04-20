@@ -1,10 +1,8 @@
-import { baseRequest } from '@/shared/network';
+import { apiClient } from '@/shared/network';
 
-export const getUsers = () => {
+export const getUsers = async () => {
   // (): Promise<ApiResponse<{your type}>> => { // * For normal response
   // (): Promise<ApiResponse<ListPayload<{your type}>>> => { // * For Paginated list
-  return baseRequest({
-    method: 'GET',
-    url: '/users',
-  });
+  const response = await apiClient.get('home');
+  return response.data;
 };

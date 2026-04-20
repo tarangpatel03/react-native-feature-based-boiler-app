@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { normalize } from '@/shared/lib';
-import { useTheme } from '../../../hooks';
-import { AppColors, Theme } from '../../../themes';
+import { useTheme } from '../hooks';
+import { AppColors, Theme } from '../themes';
 
 const BaseToast = ({
   text1,
@@ -17,7 +17,7 @@ const BaseToast = ({
   const getStyle = () => {
     switch (type) {
       case 'success':
-        return styles.succesContainer;
+        return styles.successContainer;
       case 'error':
         return styles.errorContainer;
       case 'info':
@@ -30,7 +30,7 @@ const BaseToast = ({
   const getTextStyle = () => {
     switch (type) {
       case 'success':
-        return styles.succesText;
+        return styles.successText;
       case 'error':
         return styles.errorText;
       case 'info':
@@ -47,6 +47,12 @@ const BaseToast = ({
       </View>
     </View>
   );
+};
+
+export let bottomInset = 0;
+
+export const setToastBottomInset = (value: number) => {
+  bottomInset = value;
 };
 
 export const toastConfig = {
@@ -81,7 +87,7 @@ const createStyles = (theme: Theme) =>
       fontSize: normalize(14),
       fontWeight: '500',
     },
-    succesContainer: {
+    successContainer: {
       backgroundColor: theme.toast.success.background,
       borderLeftColor: theme.toast.success.primary,
     },
@@ -93,7 +99,7 @@ const createStyles = (theme: Theme) =>
       backgroundColor: theme.toast.info.background,
       borderLeftColor: theme.toast.info.primary,
     },
-    succesText: {
+    successText: {
       color: theme.toast.success.text,
     },
     errorText: {

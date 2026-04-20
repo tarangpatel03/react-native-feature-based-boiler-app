@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserStateModel } from '@/features/user';
+import { UserStateModel } from '@/entities/user';
 import { ThemeModeOptions } from '@/shared/types';
 
 const initialState: UserStateModel = {

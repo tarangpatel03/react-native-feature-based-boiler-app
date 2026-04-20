@@ -1,23 +1,24 @@
 import { useMemo } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native';
 import { HomeStackParamList } from '@/app/navigation';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useTheme, useToast } from '@/shared/hooks';
+import { useTheme } from '@/shared/hooks';
 import { Theme } from '@/shared/themes/LightTheme';
-import { AppInput, BAOutlineButton } from '@/shared/ui';
-import { normalize } from '@/shared/lib';
+import { AppInput, AppScreen, BAOutlineButton } from '@/shared/ui';
+import { logger, normalize } from '@/shared/lib';
 import { email, minLength, required, useField, useForm } from '@/shared/form';
 import { useUsers } from '../queries';
 import { useCreateUser } from '../queries/useCreateUser';
+import { showErrorToast, showSuccessToast } from '@/shared/toast';
+import { ShimmerBlock } from '@/shared/ui/shimmer';
+import FastImage from '@d11/react-native-fast-image';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'Second'>;
 
 export const SecondScreen = ({ navigation }: Props) => {
   const theme = useTheme<Theme>();
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const { showErrorToast, showSuccessToast } = useToast();
-  const { isLoading, refetch } = useUsers();
+  const { data, isLoading, refetch } = useUsers();
   const { mutate, isPending } = useCreateUser();
 
   const form = useForm({
@@ -37,10 +38,11 @@ export const SecondScreen = ({ navigation }: Props) => {
     const res = await refetch();
 
     if (res.data) {
-      showSuccessToast(`Fetched ${res.data} users`);
+      showSuccessToast(`Fetched home`);
     }
 
     if (res.error) {
+      logger.error(res.error.message, res.error);
       showErrorToast('Something went wrong');
     }
   };
@@ -63,7 +65,11 @@ export const SecondScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <AppScreen
+      keyboardAvoiding
+      dismissKeyboardOnTouch
+      contentContainerStyle={styles.container}
+    >
       <BAOutlineButton
         buttonText={'Go Back'}
         textStyle={styles.buttonText}
@@ -94,7 +100,9 @@ export const SecondScreen = ({ navigation }: Props) => {
         textStyle={styles.buttonText}
         onPress={handleCreateUser}
       />
-    </SafeAreaView>
+      <FastImage style={styles.banner} source={{ uri: data?.payload?.offers[0] ?? '' }} />
+      <ShimmerBlock height={100} />
+    </AppScreen>
   );
 };
 
@@ -106,10 +114,13 @@ const createStyles = (theme: Theme) => {
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: normalize(20),
-      backgroundColor: theme.colors.background,
     },
     buttonText: {
       color: theme.colors.primaryText,
+    },
+    banner: {
+      aspectRatio: 16 / 9,
+      width: '90%',
     },
   });
 };

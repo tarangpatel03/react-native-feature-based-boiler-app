@@ -1,8 +1,9 @@
+import { showErrorToast } from '../toast';
 import { mapErrorToMessage } from './errorMapper';
 import { parseApiError } from './parser/apiErrorParser';
 import { parseFirebaseError } from './parser/firebaseErrorParser';
 
-export function errorHandler(error: any, showErrorToast: (message: string) => void) {
+export function errorHandler(error: any) {
   let message = 'Something went wrong';
 
   try {

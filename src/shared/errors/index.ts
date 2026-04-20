@@ -1,4 +1,3 @@
-export { AppError } from './AppError';
 export { errorHandler } from './errorHandler';
 export { mapErrorToMessage } from './errorMapper';
 export { firebaseErrorMessages } from './mapper/firebaseErrorMessages';

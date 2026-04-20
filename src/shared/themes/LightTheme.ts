@@ -33,6 +33,10 @@ export const LightTheme = createTheme({
     label: '#3C3C43',
     filledBackground: '#F2F2F7',
   },
+  shimmer: {
+    shimmerBackground: '#C5C5C5',
+    shimmerHighlight: '#EBEBEB',
+  },
 });
 
 export type Theme = typeof LightTheme;

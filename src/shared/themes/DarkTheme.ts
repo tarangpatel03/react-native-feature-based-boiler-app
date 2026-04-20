@@ -35,4 +35,8 @@ export const DarkTheme = createTheme({
     label: '#EBEBF5',
     filledBackground: '#2C2C2E',
   },
+  shimmer: {
+    shimmerBackground: '#3A3A3A',
+    shimmerHighlight: '#2A2A2A',
+  },
 });

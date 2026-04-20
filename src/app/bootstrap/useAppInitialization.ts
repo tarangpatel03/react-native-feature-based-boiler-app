@@ -15,8 +15,6 @@ export const useAppInitialization = () => {
         // - prefetch data
 
         await new Promise((res) => setTimeout(res, 300));
-
-        logger.info('App initialization completed');
       } catch (e) {
         logger.error('App initialization failed', { error: e });
       } finally {

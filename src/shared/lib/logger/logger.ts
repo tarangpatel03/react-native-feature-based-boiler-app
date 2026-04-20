@@ -13,7 +13,6 @@ const format = (level: LogLevel, payload: LogPayload) => {
 };
 
 const log = (level: LogLevel, payload: LogPayload) => {
-  // 👉 DEV: full logging
   if (isDev) {
     const formatted = format(level, payload);
 
@@ -28,7 +27,7 @@ const log = (level: LogLevel, payload: LogPayload) => {
         console.error(formatted, payload.data ?? '');
         break;
       case 'debug':
-        console.debug(formatted, payload.data ?? '');
+        console.log(formatted, payload.data ?? '');
         break;
     }
   }
