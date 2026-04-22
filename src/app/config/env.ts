@@ -6,6 +6,9 @@ export const ENV = {
   API_URL: isDev
     ? 'https://sandbox.discountbrosauctions.com/api'
     : 'https://jsonplaceholder.typicode.com',
+  FIREBASE_ENABLED: false,
+  AWS_ENABLED: false,
+  GOOGLE_WEB_CLIENT_ID: '',
 };
 
 // Dummy Endpoints

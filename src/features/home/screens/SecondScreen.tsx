@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
-import { HomeStackParamList } from '@/app/navigation';
+import { HomeStackParamList } from '../navigation';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useTheme } from '@/shared/hooks';
 import { Theme } from '@/shared/themes/LightTheme';

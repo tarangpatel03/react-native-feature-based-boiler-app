@@ -1,2 +1,3 @@
 export * from './screens';
-export { HomeNavigator } from './navigation/HomeNavigator';
+export { HomeNavigator, homeRoutes } from './navigation';
+export type { HomeStackParamList } from './navigation';

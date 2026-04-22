@@ -1,4 +1,4 @@
-import { HomeStackParamList } from '@/app/navigation';
+import { HomeStackParamList } from '../navigation';
 import { UserActions } from '@/entities/user';
 import { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';

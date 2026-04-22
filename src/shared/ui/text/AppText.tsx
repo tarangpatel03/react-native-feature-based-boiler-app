@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextStyle } from 'react-native';
 import { normalize } from '@/shared/lib';
 import { AppTextProps } from '@/shared/types';
 
-export const BAAppText = ({
+export const AppText = ({
   children,
   weight = '500',
   fontSize = normalize(16),

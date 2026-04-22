@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen, SecondScreen } from '../screens';
-import { HomeStackParamList } from '@/app/navigation';
+import { homeRoutes, HomeStackParamList } from './home.routes';
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -11,8 +11,8 @@ export const HomeNavigator = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name={'Home'} component={HomeScreen} />
-      <Stack.Screen name={'Second'} component={SecondScreen} />
+      <Stack.Screen name={homeRoutes.Home} component={HomeScreen} />
+      <Stack.Screen name={homeRoutes.Second} component={SecondScreen} />
     </Stack.Navigator>
   );
 };

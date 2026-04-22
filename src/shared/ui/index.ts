@@ -1,6 +1,6 @@
 export { AppInput } from './input/AppInputs';
 export * from './layout/AppKeyboardAvoidingView';
-export { BAAppText } from './text/AppText';
+export { AppText } from './text/AppText';
 export { BaseBottomSheet } from './bottomSheet/BaseBottomSheet';
 export type { BaseBottomSheetRef } from './bottomSheet/BaseBottomSheet';
 export { BAOutlineButton } from './buttons/OutlineButton';

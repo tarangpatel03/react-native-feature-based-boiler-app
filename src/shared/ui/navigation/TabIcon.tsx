@@ -5,6 +5,7 @@ import { useTheme } from '@/shared/hooks';
 import { normalize } from '@/shared/lib';
 
 type Props = {
+  title?: string;
   icon: ImageSourcePropType | undefined;
 };
 
@@ -25,13 +26,16 @@ export const TabIcon = (props: Props) => {
 const createStyles = (_theme: Theme) =>
   StyleSheet.create({
     container: {
-      paddingVertical: normalize(12),
       alignItems: 'center',
       justifyContent: 'center',
+      paddingVertical: normalize(12),
     },
     icon: {
       width: normalize(24),
       height: normalize(24),
       tintColor: AppColors.BLACK,
+    },
+    text: {
+      fontSize: 12,
     },
   });

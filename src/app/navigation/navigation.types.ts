@@ -1,14 +1,11 @@
+import { HomeStackParamList } from '@/features/home';
 import { NavigatorScreenParams } from '@react-navigation/native';
-
-export type HomeStackParamList = {
-  Home: undefined;
-  Second: undefined;
-};
+import { bottomTabRoutes, appRoutes } from './navigation.routes';
 
 export type BottomTabParamList = {
-  HomeStack: NavigatorScreenParams<HomeStackParamList>;
+  [bottomTabRoutes.HomeStack]: NavigatorScreenParams<HomeStackParamList>;
 };
 
 export type RootStackParamList = {
-  BottomTab: NavigatorScreenParams<BottomTabParamList>;
+  [appRoutes.BottomTab]: NavigatorScreenParams<BottomTabParamList>;
 };
